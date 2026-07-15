@@ -172,6 +172,30 @@ class Invoice(models.Model):
                           max_length=10, choices=PAYMENT_CHOICES, null=True, blank=True,
                           verbose_name='Método de pago')
     paypal_order_id = models.CharField(max_length=64, null=True, blank=True)
+    paypal_capture_id = models.CharField(
+        max_length=120, 
+        blank=True, 
+        null=True
+    )
+    paypal_status = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True
+    )
+    paid_at = models.DateTimeField(
+        blank=True,
+        null=True
+    )
+    sri_status = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True
+    )
+    sri_authorization = models.CharField(
+        max_length=120,
+        blank=True,
+        null=True
+    )
     saldo        = models.DecimalField(
                        max_digits=12, decimal_places=2, default=0,
                        verbose_name='Saldo pendiente de cobro')

@@ -442,13 +442,31 @@ def invoice_confirm(request, pk):
                 messages.error(request, f'Stock insuficiente — {msg}')
             return redirect('billing:invoice_confirm', pk=pk)
 
-        emit_invoice(invoice, request.user, tipo_pago=tipo_pago)
-
         if tipo_pago == Invoice.CONTADO:
-            messages.success(request, f'Factura #{invoice.id} emitida y pagada al contado.')
-        else:
-            messages.success(request, f'Factura #{invoice.id} emitida a crédito. Saldo pendiente: ${invoice.saldo}.')
-        return redirect('billing:invoice_detail', pk=invoice.pk)
+
+            return redirect(
+                "paypal:checkout",
+                invoice_id=invoice.id
+            )
+
+        emit_invoice(
+            invoice,
+            request.user,
+            tipo_pago=tipo_pago
+        )
+
+        messages.success(
+
+            request,
+
+            f'Factura #{invoice.id} emitida a crédito. Saldo pendiente: ${invoice.saldo}.'
+
+        )
+
+        return redirect(
+            'billing:invoice_detail',
+            pk=invoice.pk
+        )
 
     details_with_status = [
         {

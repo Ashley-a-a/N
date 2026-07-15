@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'store',
     'creditoventa',
     'pagos',
+    'paypal',
+    'sri',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +157,8 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'TecnoStock <noreply@t
 PAYPAL_CLIENT_ID     = os.environ.get('PAYPAL_CLIENT_ID', '')
 PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET', '')
 PAYPAL_MODE          = os.environ.get('PAYPAL_MODE', 'sandbox')
+PAYPAL_CLIENT_ID = ""
+
+PAYPAL_SECRET = ""
+
+PAYPAL_API = "https://api-m.sandbox.paypal.com"

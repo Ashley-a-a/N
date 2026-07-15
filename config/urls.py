@@ -38,4 +38,6 @@ urlpatterns = [
     path('tienda/', include('store.urls')),
     path('cobros/', include('creditoventa.urls')),
     path('pagos/', include('pagos.urls')),
+    path('paypal/', include('paypal.urls')),
+    path('sri/', include('SRI.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
